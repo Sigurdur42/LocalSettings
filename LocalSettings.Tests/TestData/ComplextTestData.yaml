@@ -1,0 +1,11 @@
+﻿my_complex_key: >+
+  name: my custom name
+
+  integerValue: 42
+
+  stringCollection:
+
+  - value 1
+
+  - Value 2
+
