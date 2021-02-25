@@ -1,1 +1,4 @@
 ﻿string_value_1: new, updated value
+int_value: 4242
+decimal_value: 100.20
+datetime_value: 2018-11-14T09:12:20.0000000

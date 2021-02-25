@@ -78,10 +78,22 @@ namespace LocalSettings.Tests
 
             // Read a couple of values
             const string key1 = "string_value_1";
+            const string keyInt = "int_value";
+            const string keyDecimal = "decimal_value";
+            const string keyDateTime = "datetime_value";
+
+            var referenceDateTime = new DateTime(2020, 12, 24, 08, 12, 20);
+
             Assert.That(target.Get(key1), Is.EqualTo("My fancy string"));
+            Assert.That(target.GetInt(keyInt), Is.EqualTo(42));
+            Assert.That(target.GetDecimal(keyDecimal), Is.EqualTo(42.43));
+            Assert.That(target.GetDateTime(keyDateTime), Is.EqualTo(referenceDateTime));
             
             // now modify them
             target.Set(key1, "new, updated value");
+            target.Set(keyInt, 4242);
+            target.Set(keyDecimal, 100.20m);
+            target.Set(keyDateTime, new DateTime(2018, 11, 14, 09, 12, 20));
 
             // and finally check the expected new yaml content
             var referenceFileContent = File.ReadAllText(referenceFileAfterModifications);

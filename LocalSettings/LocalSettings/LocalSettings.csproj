@@ -10,6 +10,7 @@
         <RepositoryUrl>https://github.com/Sigurdur42/LocalSettings</RepositoryUrl>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Description>A lean solution to store application settings based on yaml file.</Description>
+        <Version>1.0.1</Version>
     </PropertyGroup>
 
     <ItemGroup>

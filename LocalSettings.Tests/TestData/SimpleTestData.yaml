@@ -1,1 +1,4 @@
 ﻿string_value_1: My fancy string
+int_value: 42
+decimal_value: 42.43
+datetime_value: 2020-12-24T08:12:20.0000000

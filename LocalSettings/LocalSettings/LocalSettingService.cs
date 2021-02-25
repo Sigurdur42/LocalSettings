@@ -54,6 +54,28 @@ namespace LocalSettings
             return int.TryParse(found, NumberStyles.Any, CultureInfo.InvariantCulture, out var intValue) ? intValue : 0;
         }
 
+        public decimal GetDecimal(string key)
+        {
+            var found = Get(key);
+            if (found == null)
+            {
+                return 0;
+            }
+
+            return decimal.TryParse(found, NumberStyles.Any, CultureInfo.InvariantCulture, out var intValue) ? intValue : 0m;
+        }
+
+        public DateTime GetDateTime(string key)
+        {
+            var found = Get(key);
+            if (found == null)
+            {
+                return DateTime.MinValue;
+            }
+
+            return DateTime.TryParse(found, CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal, out var intValue) ? intValue : DateTime.MinValue;
+        }
+
         public string? Get(string key)
         {
             VerifyInitialized();
@@ -65,6 +87,10 @@ namespace LocalSettings
         }
 
         public void Set(string key, int value) => Set(key, value.ToString(CultureInfo.InvariantCulture));
+
+        public void Set(string key, decimal value) => Set(key, value.ToString("N", CultureInfo.InvariantCulture));
+
+        public void Set(string key, DateTime value) => Set(key, value.ToString("o", CultureInfo.InvariantCulture));
 
         public void Set(string key, string value)
         {
@@ -98,7 +124,7 @@ namespace LocalSettings
             var serializer = new SerializerBuilder()
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
                 .Build();
-            
+
             var yaml = serializer.Serialize(_settings);
             File.WriteAllText(SettingFile!.FullName, yaml);
         }

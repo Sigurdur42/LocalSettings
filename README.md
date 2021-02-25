@@ -12,7 +12,7 @@ The setting service needs to be configured once in order to know which actual fi
 
         var configFile = new FileInfo(Path.Combine(localPath, "ApplicationSettings.yaml");
 
-        service.Configure(configFile, SettingWriteMode.OnChange);
+        service.Initialize(configFile, SettingWriteMode.OnChange);
 
         // Now you can inject or pass the service and start reading/writing values.
 
